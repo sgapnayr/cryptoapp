@@ -3,7 +3,8 @@ import './App.css';
 import axios from 'axios'
 import { AppHeader, CoinCharts, CoinTable, ListHeader, StyledInput, CoinHeader, CoinList, CoinContainer, CoinDiv } from './components/app.styles'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import DoughnutChart from './charts/Line'
+import LineChart from './charts/Line'
+import BarChart from './charts/Bar'
 
 const LISTHEADER = ({ value }) => {
   return (
@@ -86,10 +87,10 @@ function App() {
 
       <CoinCharts>
         <div className='Charts'>
-          <DoughnutChart />
+          <LineChart />
         </div>
         <div className='Charts'>
-          <DoughnutChart />
+          <BarChart />
         </div>
       </CoinCharts>
 

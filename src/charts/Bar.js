@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Chart as Chartjs } from 'chart.js/auto'
-import { Line, getDatasetAtEvent } from 'react-chartjs-2'
+import { Bar, getDatasetAtEvent } from 'react-chartjs-2'
 import chart from 'chart.js/dist/chart'
 import axios from 'axios'
 
@@ -19,7 +19,7 @@ const data = [
     }
 ]
 
-function DoughnutChart() {
+function BarChart() {
     const [userData, setUserData] = useState({
         labels: data.map(data => data.data),
         datasets: [{
@@ -31,10 +31,10 @@ function DoughnutChart() {
     })
     return (
         <div>
-            <Line data={userData} />
+            <Bar data={userData} />
         </div>
     )
 }
 
-export default DoughnutChart
+export default BarChart
 
