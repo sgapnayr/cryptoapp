@@ -2,6 +2,7 @@
 *::before,
 *::after {
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
   text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
@@ -19,9 +20,9 @@
 
 /* Pre */
 :root {
-  --primary-color: rgb(5, 222, 255);
-  --secondary-color: rgb(230, 105, 255);
-  --border-color: rgb(202, 202, 202);
+  --primary-color: rgb(222, 222, 222);
+  --accent-color: #60c9ec;
+  --border-color: #ffffff;
 }
 
 body {
@@ -120,30 +121,12 @@ code {
 }
 
 /* Components */
-.CoinTable {
-  border-radius: 5px;
-  padding: 0 0 1rem 0;
-  margin: 0 0 1rem 0;
-  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.3);
-  width: 90%;
-  height: 50vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background: white;
-}
-
-/**/
-.Charts {
-  height: 25vh;
-  width: 35vw;
-  margin: 3vw;
+.grid {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
-
-/**/
 
 /* Main */
 img {
@@ -155,13 +138,18 @@ img {
 }
 
 strong {
-  color: white;
-  text-shadow: 1px 1px 12px rgba(255, 255, 255, .3);
+  color: var(--accent-color);
+  text-shadow: 1px 1px 12px rgba(0, 0, 0, .3);
 }
 
 bold {
-  color: var(--primary-color);
+  color: var(--accent-color);
   font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 /* Percentage */
@@ -171,4 +159,13 @@ bold {
 
 .red {
   color: red
+}
+
+.price {
+  transition: .2s all ease-in-out;
+  cursor: pointer;
+}
+
+.price:hover {
+  color: var(--accent-color);
 }

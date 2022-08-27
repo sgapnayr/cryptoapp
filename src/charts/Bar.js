@@ -24,8 +24,8 @@ function BarChart() {
         labels: data.map(data => data.data),
         datasets: [{
             label: 'Coins',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: '#60c9ec',
+            borderColor: '#60c9ec',
             data: data.map(data => data.price),
         }]
     })

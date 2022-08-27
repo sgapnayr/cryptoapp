@@ -18,7 +18,7 @@ export const CoinCharts = styled.div`
     align-items: center;
     margin: 3rem 0 0 0;
     border-radius: 5px;
-    width: 95%;
+    width: 90%;
     background: white;
     transition: .2s all ease-in-out;
     &:hover {
@@ -27,13 +27,22 @@ export const CoinCharts = styled.div`
     }
 `
 
+export const Charts = styled.div`
+    height: 25vh;
+    width: 35vw;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
 /* COIN TABLE */
 export const CoinTable = styled.div`
     border-radius: 5px;
     padding: 0 0 1rem 0;
     margin: 2rem .5rem -1rem .5rem;
     box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.3);
-    width: 90%;
+    width: 85%;
     height: 50vh;
     display: flex;
     align-items: center;
@@ -55,12 +64,12 @@ export const ListHeader = styled.div`
 
 export const CoinHeader = styled.div`
     display: grid;
-    width: 90%;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
+    width: 90%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     font-weight: bold;
-    margin: .5vh 0 .5vh 0 
+    margin: .5vh 0 .5vh 0;
 `
 
 export const CoinList = styled.div`
@@ -97,7 +106,7 @@ export const CoinDiv = styled.div`
 export const StyledInput = styled.input`
     width: 100%;
     padding: 1.5vh 5vw;
-    margin: -1vh 0 2vw;
+    margin: 0vh 0 1vw;
     box-shadow: 1px 1px 10px rgba(0,0,0,.4);
     border: 1px solid rgba(0,0,0,.2);
     text-align: center;
@@ -111,4 +120,12 @@ export const StyledInput = styled.input`
         border: 1px solid rgba(0,0,0,.1);
         transform: scale(1.05)
     }
+`
+
+export const StyledForm = styled.form`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
 `
