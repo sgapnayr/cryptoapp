@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css';
 import axios from 'axios'
-import { AppHeader, CoinCharts, CoinTable, ListHeader, StyledInput, CoinHeader, CoinList, CoinContainer, CoinDiv } from './components/app.styles'
+import { AppHeader, BlankHeader, CoinCharts, CoinTable, ListHeader, StyledInput, CoinHeader, CoinList, CoinContainer, CoinDiv } from './components/app.styles'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LineChart from './charts/Line'
 import BarChart from './charts/Bar'
@@ -9,7 +9,7 @@ import BarChart from './charts/Bar'
 const LISTHEADER = ({ value }) => {
   return (
     <ListHeader>
-      <h3>Crypto <bold>{value ? value : 'Table'}</bold>
+      <h3>Coin <bold>{value ? value : 'List'}</bold>
       </h3>
     </ListHeader>
   )
@@ -81,27 +81,46 @@ function App() {
   return (
     <div className="App">
 
-      <AppHeader>
-        <h2>Crypto <strong>Architex</strong></h2>
-      </AppHeader>
-
-      <CoinCharts>
-        <div className='Charts'>
-          <LineChart />
+      <div className="border">
+        <div className="border-header">
+          <AppHeader>
+            <h2>Crypto <strong>Architex</strong></h2>
+          </AppHeader>
         </div>
-        <div className='Charts'>
-          <BarChart />
-        </div>
-      </CoinCharts>
+      </div>
 
-      <CoinTable>
-        <LISTHEADER value={search} />
-        <form>
-          <StyledInput onChange={handleChange} placeholder='Search Crypto Here...' />
-        </form>
-        <COINHEADER />
-        <LIST coins={filteredCoinList} />
-      </CoinTable>
+      <div className="border-around">
+
+        <CoinCharts>
+          <div className='Charts'>
+            <LineChart />
+          </div>
+          <div className='Charts'>
+            <BarChart />
+          </div>
+        </CoinCharts>
+
+        <div className="side-borders">
+          <div className="border-left"></div>
+          <CoinTable>
+            <LISTHEADER value={search} />
+            <form>
+              <StyledInput onChange={handleChange} placeholder='Search Crypto Here...' />
+            </form>
+            <COINHEADER />
+
+
+            <LIST coins={filteredCoinList} />
+          </CoinTable>
+          <div className="border-right"></div>
+        </div>
+
+      </div>
+
+      <div className="border">
+        <div className="border-footer">
+        </div>
+      </div>
 
     </div>
   );
