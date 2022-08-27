@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css';
 import axios from 'axios'
 import { AppHeader, BlankHeader, CoinCharts, CoinTable, ListHeader, StyledInput, CoinHeader, CoinList, CoinContainer, CoinDiv } from './components/app.styles'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import LineChart from './charts/Line'
 import BarChart from './charts/Bar'
 
@@ -28,10 +28,10 @@ const COINHEADER = () => {
   )
 }
 
-const LIST = ({ coins }) => {
+const LIST = ({ filteredCoinList, coins }) => {
   return (
     <CoinList>
-      {coins.map(coin => {
+      {filteredCoinList.map(coin => {
         return (
           <CoinContainer>
             <CoinDiv>
@@ -110,7 +110,7 @@ function App() {
             <COINHEADER />
 
 
-            <LIST coins={filteredCoinList} />
+            <LIST filteredCoinList={filteredCoinList} coins={coins} />
           </CoinTable>
           <div className="border-right"></div>
         </div>

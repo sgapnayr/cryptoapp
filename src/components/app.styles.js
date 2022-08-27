@@ -16,17 +16,22 @@ export const CoinCharts = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem;
+    margin: 3rem 0 0 0;
     border-radius: 5px;
-    width: 90%;
+    width: 95%;
     background: white;
+    transition: .2s all ease-in-out;
+    &:hover {
+        transform: scale(1.01);
+        box-shadow: 1px 1px 13px rgba(0, 0, 0, 0.3);
+    }
 `
 
 /* COIN TABLE */
 export const CoinTable = styled.div`
     border-radius: 5px;
     padding: 0 0 1rem 0;
-    margin: 0 0 1rem 0;
+    margin: 2rem .5rem -1rem .5rem;
     box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.3);
     width: 90%;
     height: 50vh;
@@ -34,13 +39,18 @@ export const CoinTable = styled.div`
     align-items: center;
     flex-direction: column;
     background: white;
+    transition: .2s all ease-in-out;
+    &:hover {
+        transform: scale(1.01);
+        box-shadow: 1px 1px 13px rgba(0, 0, 0, 0.3);
+    }
 `
 
 export const ListHeader = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2vh 0;
+    margin: .5rem 0;
 `
 
 export const CoinHeader = styled.div`
@@ -87,7 +97,7 @@ export const CoinDiv = styled.div`
 export const StyledInput = styled.input`
     width: 100%;
     padding: 1.5vh 5vw;
-    margin: 0 0 2vw;
+    margin: -1vh 0 2vw;
     box-shadow: 1px 1px 10px rgba(0,0,0,.4);
     border: 1px solid rgba(0,0,0,.2);
     text-align: center;
