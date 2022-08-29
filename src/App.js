@@ -31,7 +31,7 @@ const COINHEADER = ({ handleSort, isSorted }) => {
 const LIST = ({ filteredCoinList, coins }) => {
   return (
     <CoinList>
-      {coins && filteredCoinList.map(coin => {
+      {coins && filteredCoinList?.map(coin => {
         return (
           <CoinContainer key={coin.id}>
             <CoinDiv>
@@ -119,9 +119,6 @@ function App() {
       </div>
       <div className="border-around">
         <CoinCharts>
-          <Charts>
-            <LineChart />
-          </Charts>
           <Charts>
             <BarChart />
           </Charts>

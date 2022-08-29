@@ -1,37 +1,40 @@
 import React, { useEffect, useState } from 'react'
+import { Charts } from '../components/app.styles'
 import { Chart as Chartjs } from 'chart.js/auto'
-import { Bar, getDatasetAtEvent } from 'react-chartjs-2'
+import { Line, Bar, getDatasetAtEvent } from 'react-chartjs-2'
 import axios from 'axios'
 
-const data = [
-    {
-        data: 1,
-        price: 2
-    },
-    {
-        data: 2,
-        price: 3
-    },
-    {
-        data: 3,
-        price: 4
-    }
-]
-
 function BarChart() {
-    const [userData, setUserData] = useState({
-        labels: data.map(data => data.data),
+    const [apiData, setApiData] = useState([])
+    const url = 'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily'
+
+    async function GetData() {
+        const { data } = await axios.get(url)
+        setApiData(data)
+        console.log(apiData)
+    }
+
+    useEffect(() => {
+        GetData()
+    }, [])
+
+    // const volumeData = apiData.total_volumes.map(el => el[1])
+    // const volumeLabels = apiData.total_volumes.map(el => new Date(el[0]).getDate().toString()).map(el => el.length === 1 ? `0${el}` : el)
+
+    const data = {
+        labels: ['1'],
         datasets: [{
-            label: 'Coins',
+            label: 'BTC',
             backgroundColor: '#60c9ec',
             borderColor: '#60c9ec',
-            data: data.map(data => data.price),
+            data: [1]
         }]
-    })
+    }
     return (
-        <div>
-            <Bar data={userData} />
-        </div>
+        <Charts>
+            <Line data={data} />
+            <Bar data={data} />
+        </Charts>
     )
 }
 
