@@ -15,7 +15,7 @@ const data = [
     },
     {
         data: 3,
-        price: 4
+        price: 1
     }
 ]
 

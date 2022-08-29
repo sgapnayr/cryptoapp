@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useNavigate } from 'react'
 import axios from 'axios'
 import { AppHeader, Charts, CoinCharts, CoinTable, ListHeader, StyledForm, StyledInput, CoinHeader, CoinList, CoinContainer, CoinDiv } from './components/app.styles'
 import { Routes, Route, Link } from 'react-router-dom';
@@ -9,7 +9,7 @@ import BarChart from './charts/Bar'
 const LISTHEADER = ({ value }) => {
   return (
     <ListHeader>
-      <h3>Coin <bold>{value ? value : 'List'}</bold>
+      <h3>Coin <strong>{value ? value : 'List'}</strong>
       </h3>
     </ListHeader>
   )
@@ -31,35 +31,33 @@ const COINHEADER = ({ handleSort, isSorted }) => {
 const LIST = ({ filteredCoinList, coins }) => {
   return (
     <CoinList>
-      {filteredCoinList.map(coin => {
+      {coins && filteredCoinList.map(coin => {
         return (
-          <Link to={`/coin/${coin.id}`} element={<Coin />} key={coin.id}>
-            <CoinContainer>
-              <CoinDiv>
-                {coins.indexOf(coin) + 1}
-              </CoinDiv>
-              <CoinDiv>
-                <img src={coin.image} alt="Crypto" />
-              </CoinDiv>
-              <CoinDiv>
-                {coin.name}
-              </CoinDiv>
-              <CoinDiv>
-                ({coin.symbol.toUpperCase()})
-              </CoinDiv>
-              <CoinDiv>
-                <h4>
-                  $
-                  {coin.current_price.toLocaleString()}
-                </h4>
-              </CoinDiv>
-              <CoinDiv>
-                <div className={coin.price_change_percentage_24h > 0 ? 'green' : 'red'} >
-                  {coin.price_change_percentage_24h.toFixed(2)} %
-                </div>
-              </CoinDiv>
-            </CoinContainer>
-          </Link>
+          <CoinContainer key={coin.id}>
+            <CoinDiv>
+              {coins.indexOf(coin) + 1}
+            </CoinDiv>
+            <CoinDiv>
+              <img src={coin.image} alt="Crypto" />
+            </CoinDiv>
+            <CoinDiv>
+              {coin.name}
+            </CoinDiv>
+            <CoinDiv>
+              ({coin.symbol.toUpperCase()})
+            </CoinDiv>
+            <CoinDiv>
+              <h4>
+                $
+                {coin.current_price.toLocaleString()}
+              </h4>
+            </CoinDiv>
+            <CoinDiv>
+              <div className={coin.price_change_percentage_24h > 0 ? 'green' : 'red'} >
+                {coin.price_change_percentage_24h?.toFixed(2)} %
+              </div>
+            </CoinDiv>
+          </CoinContainer>
         )
       })}
     </CoinList>
@@ -71,9 +69,9 @@ function App() {
   const [search, setSearch] = useState('')
   const [isSorted, setSort] = useState(null)
 
-  const USD_URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=1000&page=1&sparkline=false'
+  const USD_URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false'
 
-  useEffect(() => { axios.get(USD_URL).then(res => setCoins(res.data)).catch(err => console.log('Error')) }, [])
+  axios.get(USD_URL).then(res => setCoins(res.data))
 
   const handleChange = (e) => {
     setSearch(e.target.value)
@@ -137,12 +135,7 @@ function App() {
               <StyledInput onChange={handleChange} placeholder='Search Crypto Here...' />
             </StyledForm>
             <COINHEADER handleSort={handleSort} isSorted={isSorted} />
-            <Routes>
-              <Route path='/' element={<LIST filteredCoinList={renderList()} coins={coins} />} />
-              <Route path='/coin' element={<Coin />}>
-                <Route path=':coinId' element={<Coin />} />
-              </Route>
-            </Routes>
+            <LIST filteredCoinList={renderList()} coins={coins} />
           </CoinTable>
           <div className="border-right"></div>
         </div>

@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Chart as Chartjs } from 'chart.js/auto'
 import { Bar, getDatasetAtEvent } from 'react-chartjs-2'
-import chart from 'chart.js/dist/chart'
 import axios from 'axios'
 
 const data = [
@@ -37,4 +36,3 @@ function BarChart() {
 }
 
 export default BarChart
-
