@@ -1,10 +1,18 @@
 import { useState, useEffect, useNavigate } from 'react'
 import axios from 'axios'
-import { AppHeader, Charts, CoinCharts, CoinTable, ListHeader, StyledForm, StyledInput, CoinHeader, CoinList, CoinContainer, CoinDiv } from './components/app.styles'
+import { AppHeader, Border, BorderHeader, BordersAround, BorderLeft, SideBorders, BorderRight, Charts, CoinCharts, CoinTable, ListHeader, StyledForm, StyledInput, CoinHeader, CoinList, CoinContainer, CoinDiv } from './components/app.styles'
 import { Routes, Route, Link } from 'react-router-dom';
 import Coin from './routes/Coin'
 import LineChart from './charts/Line'
 import BarChart from './charts/Bar'
+
+const APPTITLE = () => {
+  return (
+    <>
+      <h2>Crypto <strong>Architex</strong></h2>
+    </>
+  )
+}
 
 const LISTHEADER = ({ value }) => {
   return (
@@ -108,24 +116,21 @@ function App() {
 
   return (
     <div className="App">
-      <div className="border">
-        <div className="border-header">
-          <Link to='/'>
-            <AppHeader>
-              <h2>Crypto <strong>Architex</strong></h2>
-            </AppHeader>
-          </Link>
-        </div>
-      </div>
-      <div className="border-around">
+      <Border>
+        <BorderHeader>
+          <AppHeader>
+            <APPTITLE />
+          </AppHeader>
+        </BorderHeader>
+      </Border>
+      <BordersAround>
         <CoinCharts>
           <Charts>
             <BarChart />
           </Charts>
         </CoinCharts>
-
-        <div className="side-borders">
-          <div className="border-left"></div>
+        <SideBorders>
+          <BorderLeft />
           <CoinTable>
             <LISTHEADER value={search} />
             <StyledForm>
@@ -134,11 +139,9 @@ function App() {
             <COINHEADER handleSort={handleSort} isSorted={isSorted} />
             <LIST filteredCoinList={renderList()} coins={coins} />
           </CoinTable>
-          <div className="border-right"></div>
-        </div>
-
-      </div>
-
+          <BorderRight />
+        </SideBorders>
+      </BordersAround>
       <div className="border">
         <div className="border-footer"></div>
       </div>
