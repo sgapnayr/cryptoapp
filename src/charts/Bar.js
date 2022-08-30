@@ -17,16 +17,16 @@ function BarChart() {
         GetData()
     }, [])
 
-    // const volumeData = apiData.prices.map(el => el[1])
-    // const volumeLabels = apiData.total_volumes.map(el => new Date(el[0]).getDate().toString()).map(el => el.length === 1 ? `0${el}` : el)
+    const volumeData = apiData.prices.map(el => el[1])
+    const volumeLabels = apiData.total_volumes.map(el => new Date(el[0]).getDate().toString()).map(el => el.length === 1 ? `0${el}` : el)
 
     const data = {
-        labels: ['BTC', 'ETH', 'ADA'],
+        labels: volumeLabels,
         datasets: [{
             label: 'Crypto',
             backgroundColor: '#60c9ec',
             borderColor: '#60c9ec',
-            data: [1, 2, 3]
+            data: volumeData
         }]
     }
     return (
